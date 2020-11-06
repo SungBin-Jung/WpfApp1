@@ -32,7 +32,7 @@
         <Label Content="Number of Bars" HorizontalAlignment="Left" Height="29" Margin="382,55,0,0" VerticalAlignment="Top" Width="98"/>
         <Label Content="Total Remnant" HorizontalAlignment="Left" Height="29" Margin="540,54,0,0" VerticalAlignment="Top" Width="98"/>
         <Label x:Name="total_remnant" Content="0" HorizontalAlignment="Left" Height="38" Margin="643,49,0,0" VerticalAlignment="Top" Width="139" FontSize="20"/>
-        <TextBox x:Name="extrusion_length" HorizontalAlignment="Left" Height="26" Margin="31,52,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" KeyDown="Extrusion_length_KeyDown"/>
+        <TextBox x:Name="extrusion_length_textBox" HorizontalAlignment="Left" Height="26" Margin="31,52,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" KeyDown="Extrusion_length_KeyDown"/>
         <Label Content="mm" HorizontalAlignment="Left" Height="23" Margin="84,48,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Label" HorizontalAlignment="Left" Height="2" Margin="34,72,0,0" VerticalAlignment="Top" Width="79" BorderThickness="0,0,0,5" Background="Black"/>
         <Label Content="Length" HorizontalAlignment="Left" Margin="43,172,0,0" VerticalAlignment="Top" FontSize="10"/>
