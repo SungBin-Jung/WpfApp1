@@ -30,7 +30,7 @@ namespace WpfApp1
         private static List<CutResult> result = new List<CutResult>();
         private static int saw = 0;
         private static int extrusion_length = 0;
-
+        private static int remnant = 99999;
         private class Parts
         {
             public int length;
@@ -105,7 +105,7 @@ namespace WpfApp1
             {
                 if(needToCut(part) && length > part.length)
                 {
-                    ratio = length / (part.length + saw) % 1;
+                    ratio = (int)(length / (part.length + saw));
                     if(ratio < lowestRatio)
                     {
                         lowestRatio = ratio;
@@ -168,6 +168,10 @@ namespace WpfApp1
                 currentBar.Sort((p0, p1) => p1.quantity - p0.quantity);
                 result.Add(new CutResult(remaining, currentBar));
                 currentBar = new List<Bar>();
+                for (int i = 0; i < partsList.Count; i++)
+                {
+                    currentBar.Add(new Bar(i, partsList[i].length, 0));
+                }
             }
             MainWindow.result = result;
         }
@@ -184,11 +188,6 @@ namespace WpfApp1
         }
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            int bars = 1;
-            int remnant = 0;
-            int minBars = 0;
-            int minRemnant = 100000000;
-            int results = 0;
             saw = Convert.ToInt32(thickness.Text.ToString());
             lengthList.Clear();
             quantityList.Clear();
@@ -222,76 +221,50 @@ namespace WpfApp1
                     partsList.Add(new Parts(length, quantity));
                 }
             }
+            int result_extrusion = 0;
+            int count = 0;
             foreach (Extrusion extrusion in instance)
             {
-                bars = 1;
-                remnant = 0;
-                int extrusion_length = extrusion.length;
-                int remains = extrusion_length;
-                List<Parts> tempList = new List<Parts>(partsList);
-                tempList.Sort();
-                tempList.Reverse();
-
-                while(tempList.Count != 0)
+                extrusion_length = extrusion.length;
+                Calcuate();
+                int waste = 0;
+                foreach(CutResult cutResult in result)
                 {
-                    foreach(Parts parts in tempList)
-                    {
-
-                        if(remains >= parts.length && parts.length != tempList.Last().length)
-                        {
-                            int t = remains / (parts.length + saw);
-                            if(t == 1)
-                            {
-                                remains -= (parts.length + saw) * 1;
-                                parts.quantity -= 1;
-                            }
-                            else if (parts.quantity >= t-1)
-                            {
-                                remains -= (parts.length + saw) * (t - 1);
-                                parts.quantity -= t - 1;
-                            }
-                            else if(t-1 > parts.quantity)
-                            {
-                                remains -= (parts.length * saw) * parts.quantity;
-                                parts.quantity = 0;
-                            }
-                            
-                        else if(remains < tempList.Last().length)
-                        {
-                            remains 
-                            bars++;
-                            remnant += remains;
-                            remains = extrusion_length;
-                        }
-                    }
+                    waste += cutResult.remnant;
                 }
-                remnant += remains;
-                if(minRemnant >= remnant)
+               
+                if(waste <= remnant)
                 {
-                    minRemnant = remnant;
-                    minBars = bars;
-                    results = extrusion.length;
+                    remnant = waste;
+                    result_extrusion = extrusion_length;
+                    count = result.Count;
                 }
             }
-            result_length.Text = results.ToString();
-            number_of_bars.Content = minBars.ToString();
-            if (minRemnant == 100000000)
-            {
-                total_remnant.Content = "0";
-            }
-            else
-            {
-                total_remnant.Content = minRemnant.ToString();
-            }
-            
+            result_length.Text = result_extrusion.ToString();
+            number_of_bars.Content = count.ToString();
+            total_remnant.Content = remnant.ToString();
+            remnant = 99999;
+
+
         }
-
         private void Extrusion_length_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Enter)
             {
-                int text = Convert.ToInt32(extrusion_length.Text.ToString());
+                int text = Convert.ToInt32(extrusion_length_textBox.Text.ToString());
                 instance.Add(new Extrusion() { length =  text});
+                extrusion_Length_ListView.ItemsSource = instance;
+                extrusion_Length_ListView.Items.Refresh();
+                extrusion_length_textBox.Clear();
+            }
+        }
+
+        private void Extrusion_Length_ListView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Delete)
+            {
+                ListBox listbox = (ListBox)sender;
+                instance.RemoveAt(listbox.SelectedIndex);
                 extrusion_Length_ListView.ItemsSource = instance;
                 extrusion_Length_ListView.Items.Refresh();
             }

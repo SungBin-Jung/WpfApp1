@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="122" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
-            <ListView x:Name="extrusion_Length_ListView" HorizontalAlignment="Left" Height="102" Margin="108,9,0,0" VerticalAlignment="Top" Width="127">
+            <ListView x:Name="extrusion_Length_ListView" HorizontalAlignment="Left" Height="102" Margin="108,9,0,0" VerticalAlignment="Top" Width="127" KeyDown="Extrusion_Length_ListView_KeyDown">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Extrusion Length" Width="100" DisplayMemberBinding="{Binding length}"/>
@@ -17,59 +17,59 @@
             </ListView>
 
         </Border>
-        <TextBox x:Name="thickness" HorizontalAlignment="Left" Height="26" Margin="271,52,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="thickness" HorizontalAlignment="Left" Height="26" Margin="271,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="1" Text="0"/>
         <Label Content="Extrusion Length" HorizontalAlignment="Left" Margin="27,23,0,0" VerticalAlignment="Top" FontSize="10"/>
         <Label Content="Saw Blade Thickness" HorizontalAlignment="Left" Margin="248,23,0,0" VerticalAlignment="Top" FontSize="10" RenderTransformOrigin="0.021,1.021"/>
         <Label Content="Label" HorizontalAlignment="Left" Height="2" Margin="272,72,0,0" VerticalAlignment="Top" Width="79" BorderThickness="0,0,0,5" Background="Black"/>
         <Label Content="mm" HorizontalAlignment="Left" Height="23" Margin="324,48,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Length" HorizontalAlignment="Left" Margin="43,152,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="length1" HorizontalAlignment="Left" Height="26" Margin="97,156,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="length1" HorizontalAlignment="Left" Height="26" Margin="97,156,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="2"/>
         <Label Content="mm" HorizontalAlignment="Left" Height="23" Margin="150,153,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="248,152,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="quantity1" HorizontalAlignment="Left" Height="26" Margin="302,156,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="quantity1" HorizontalAlignment="Left" Height="26" Margin="302,156,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="3"/>
         <Label Content="Result" HorizontalAlignment="Left" Margin="386,23,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label x:Name="number_of_bars" Content="0" HorizontalAlignment="Left" Height="38" Margin="491,49,0,0" VerticalAlignment="Top" Width="44" FontSize="20"/>
         <Label Content="Number of Bars" HorizontalAlignment="Left" Height="29" Margin="382,55,0,0" VerticalAlignment="Top" Width="98"/>
         <Label Content="Total Remnant" HorizontalAlignment="Left" Height="29" Margin="540,54,0,0" VerticalAlignment="Top" Width="98"/>
         <Label x:Name="total_remnant" Content="0" HorizontalAlignment="Left" Height="38" Margin="643,49,0,0" VerticalAlignment="Top" Width="139" FontSize="20"/>
-        <TextBox x:Name="extrusion_length_textBox" HorizontalAlignment="Left" Height="26" Margin="31,52,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" KeyDown="Extrusion_length_KeyDown"/>
+        <TextBox x:Name="extrusion_length_textBox" HorizontalAlignment="Left" Height="26" Margin="31,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" KeyDown="Extrusion_length_KeyDown" TabIndex="0" Text="0"/>
         <Label Content="mm" HorizontalAlignment="Left" Height="23" Margin="84,48,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Label" HorizontalAlignment="Left" Height="2" Margin="34,72,0,0" VerticalAlignment="Top" Width="79" BorderThickness="0,0,0,5" Background="Black"/>
         <Label Content="Length" HorizontalAlignment="Left" Margin="43,172,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="length2" HorizontalAlignment="Left" Height="26" Margin="97,176,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="length2" HorizontalAlignment="Left" Height="26" Margin="97,176,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="4"/>
         <Label Content="mm" HorizontalAlignment="Left" Height="23" Margin="150,173,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="248,172,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="quantity2" HorizontalAlignment="Left" Height="26" Margin="302,176,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="quantity2" HorizontalAlignment="Left" Height="26" Margin="302,176,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="5"/>
         <Label Content="Length" HorizontalAlignment="Left" Margin="43,194,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="length3" HorizontalAlignment="Left" Height="26" Margin="97,198,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="length3" HorizontalAlignment="Left" Height="26" Margin="97,198,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="6"/>
         <Label Content="mm" HorizontalAlignment="Left" Height="23" Margin="150,195,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="248,194,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="quantity3" HorizontalAlignment="Left" Height="26" Margin="302,198,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="quantity3" HorizontalAlignment="Left" Height="26" Margin="302,198,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="7"/>
         <Label Content="Length" HorizontalAlignment="Left" Margin="43,214,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="length4" HorizontalAlignment="Left" Height="26" Margin="97,218,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="length4" HorizontalAlignment="Left" Height="26" Margin="97,218,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="8"/>
         <Label Content="mm" HorizontalAlignment="Left" Height="23" Margin="150,215,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="248,214,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="quantity4" HorizontalAlignment="Left" Height="26" Margin="302,218,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="quantity4" HorizontalAlignment="Left" Height="26" Margin="302,218,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="9"/>
         <Label Content="Length" HorizontalAlignment="Left" Margin="43,237,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="length5" HorizontalAlignment="Left" Height="26" Margin="97,241,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="length5" HorizontalAlignment="Left" Height="26" Margin="97,241,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="10"/>
         <Label Content="mm" HorizontalAlignment="Left" Height="23" Margin="150,238,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="248,237,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="quantity5" HorizontalAlignment="Left" Height="26" Margin="302,241,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="quantity5" HorizontalAlignment="Left" Height="26" Margin="302,241,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="11"/>
         <Label Content="Length" HorizontalAlignment="Left" Margin="43,257,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="length6" HorizontalAlignment="Left" Height="26" Margin="97,261,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="length6" HorizontalAlignment="Left" Height="26" Margin="97,261,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="12"/>
         <Label Content="mm" HorizontalAlignment="Left" Height="23" Margin="150,258,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="248,257,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="quantity6" HorizontalAlignment="Left" Height="26" Margin="302,261,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="quantity6" HorizontalAlignment="Left" Height="26" Margin="302,261,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="13"/>
         <Label Content="Length" HorizontalAlignment="Left" Margin="43,279,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="length7" HorizontalAlignment="Left" Height="26" Margin="97,283,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="length7" HorizontalAlignment="Left" Height="26" Margin="97,283,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="14"/>
         <Label Content="mm" HorizontalAlignment="Left" Height="23" Margin="150,280,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="248,279,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="quantity7" HorizontalAlignment="Left" Height="26" Margin="302,283,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="quantity7" HorizontalAlignment="Left" Height="26" Margin="302,283,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="15"/>
         <Label Content="Length" HorizontalAlignment="Left" Margin="43,299,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="length8" HorizontalAlignment="Left" Height="26" Margin="97,303,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="length8" HorizontalAlignment="Left" Height="26" Margin="97,303,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="16"/>
         <Label Content="mm" HorizontalAlignment="Left" Height="23" Margin="150,300,0,0" VerticalAlignment="Top" Width="47"/>
         <Label Content="Quantity" HorizontalAlignment="Left" Margin="248,299,0,0" VerticalAlignment="Top" FontSize="10"/>
-        <TextBox x:Name="quantity8" HorizontalAlignment="Left" Height="26" Margin="302,303,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496"/>
+        <TextBox x:Name="quantity8" HorizontalAlignment="Left" Height="26" Margin="302,303,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="17"/>
         <Button x:Name="btn" Content="Calculate" HorizontalAlignment="Left" Height="32" Margin="302,87,0,0" VerticalAlignment="Top" Width="120" FontSize="20" Click="Btn_Click"/>
         <TextBlock x:Name="result_length" HorizontalAlignment="Left" Height="35" Margin="472,28,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="85" FontSize="20"/>
     </Grid>
