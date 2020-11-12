@@ -72,5 +72,8 @@
         <TextBox x:Name="quantity8" HorizontalAlignment="Left" Height="26" Margin="302,303,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="54" TextAlignment="Right" BorderThickness="0" RenderTransformOrigin="0.944,0.496" TabIndex="17"/>
         <Button x:Name="btn" Content="Calculate" HorizontalAlignment="Left" Height="32" Margin="302,87,0,0" VerticalAlignment="Top" Width="120" FontSize="20" Click="Btn_Click"/>
         <TextBlock x:Name="result_length" HorizontalAlignment="Left" Height="35" Margin="472,28,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="85" FontSize="20"/>
+        <TextBlock x:Name="result_textBlock" HorizontalAlignment="Left" Height="177" Margin="447,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="322"/>
+        <Label x:Name="figure_label" Content="Figure of Each Bar" HorizontalAlignment="Left" Height="37" Margin="445,145,0,0" VerticalAlignment="Top" Width="324"/>
+        <Button x:Name="btn_insert" Content="Insert" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="34,87,0,0" Click="Btn_insert_Click"/>
     </Grid>
 </Window>

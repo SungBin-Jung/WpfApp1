@@ -165,7 +165,7 @@ namespace WpfApp1
                     partsToCut = getPartsToCut(calcuatedParts);
                     minpartLength = getMinPartLength(partsToCut);
                 }
-                currentBar.Sort((p0, p1) => p1.quantity - p0.quantity);
+                currentBar.Sort((p0, p1) => p1.length - p0.length);
                 result.Add(new CutResult(remaining, currentBar));
                 currentBar = new List<Bar>();
                 for (int i = 0; i < partsList.Count; i++)
@@ -179,7 +179,6 @@ namespace WpfApp1
         {
             public int length { get; set; }
            
-            
         }
         
         public MainWindow()
@@ -221,20 +220,30 @@ namespace WpfApp1
                     partsList.Add(new Parts(length, quantity));
                 }
             }
+            partsList.Sort((p0,p1)=> p1.length - p0.length);
             int result_extrusion = 0;
             int count = 0;
+            string result_str = string.Empty;
             foreach (Extrusion extrusion in instance)
             {
                 extrusion_length = extrusion.length;
                 Calcuate();
                 int waste = 0;
+                string str = string.Empty;
                 foreach(CutResult cutResult in result)
                 {
+                    foreach(Bar bar in cutResult.parts)
+                    {
+                        if(bar.quantity != 0)
+                            str += bar.length.ToString() +"X"+ bar.quantity.ToString()+"\t";
+                    }
+                    str += "waste : "+cutResult.remnant+"\n";
                     waste += cutResult.remnant;
                 }
                
                 if(waste <= remnant)
                 {
+                    result_str = string.Copy(str);
                     remnant = waste;
                     result_extrusion = extrusion_length;
                     count = result.Count;
@@ -243,9 +252,10 @@ namespace WpfApp1
             result_length.Text = result_extrusion.ToString();
             number_of_bars.Content = count.ToString();
             total_remnant.Content = remnant.ToString();
+            result_textBlock.Text = result_str;
+            result_str = string.Empty;
             remnant = 99999;
-
-
+            
         }
         private void Extrusion_length_KeyDown(object sender, KeyEventArgs e)
         {
@@ -268,6 +278,15 @@ namespace WpfApp1
                 extrusion_Length_ListView.ItemsSource = instance;
                 extrusion_Length_ListView.Items.Refresh();
             }
+        }
+
+        private void Btn_insert_Click(object sender, RoutedEventArgs e)
+        {
+            int text = Convert.ToInt32(extrusion_length_textBox.Text.ToString());
+            instance.Add(new Extrusion() { length = text });
+            extrusion_Length_ListView.ItemsSource = instance;
+            extrusion_Length_ListView.Items.Refresh();
+            extrusion_length_textBox.Clear();
         }
     }
 }
